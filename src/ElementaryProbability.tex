@@ -1,0 +1,263 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in, paperwidth=8.3in, paperheight=11.7in]{geometry}
+\usepackage{amsmath,amsfonts,fancyhdr}
+\usepackage[section]{DomH}
+\headertitle{Elementary Probability}
+
+\begin{document}
+
+\title{Elementary Probability}
+\author{Dom Hutchinson}
+\date{\today}
+\maketitle
+
+\textit{Probability} is the study of predicting the likelihood of \underline{future} events. While \textit{Statistics} is the analysis of data from \underline{past} events.
+
+\section{Definition}
+
+\begin{definition}{Axioms of Probability}
+
+\end{definition}
+
+\begin{definition}{Permutation}
+  % And complimentary event
+\end{definition}
+
+\begin{definition}{Combination}
+  % And complimentary event
+\end{definition}
+
+\subsection{Randomness}
+
+\begin{definition}{Sample Space}
+
+\end{definition}
+
+\begin{definition}{Sigmafield}
+
+\end{definition}
+
+\begin{definition}{Probability Space}
+
+\end{definition}
+
+\begin{definition}{Random Event}
+  % And complimentary event
+\end{definition}
+
+\begin{definition}{Random Variable}
+
+\end{definition}
+
+\begin{definition}{Random Sum}
+
+\end{definition}
+
+\subsection{Probability Mass Functions}
+
+\begin{definition}{Probability Measure, $\prob$}
+
+\end{definition}
+
+\begin{definition}{Discrete Distribution}
+
+\end{definition}
+
+\begin{definition}{Continuous Distribution}
+  % Conditional Expectation
+\end{definition}
+
+\begin{definition}{Joint Probability Mass Function}
+
+\end{definition}
+
+\begin{definition}{Marginal Probability Mass Function}
+
+\end{definition}
+
+\begin{definition}{Conditional Probability Mass Function}
+
+\end{definition}
+
+\subsection{Describing Mass Functions}
+
+\begin{definition}{Expectation}
+
+\end{definition}
+
+\begin{definition}{Variance}
+
+\end{definition}
+
+\begin{definition}{Conditional Variance}
+
+\end{definition}
+
+\begin{definition}{Covariance}
+
+\end{definition}
+
+\begin{definition}{Percentage Points}
+
+\end{definition}
+
+\subsection{Dependence \& Correlation}
+
+\begin{definition}{Independent Random Variables}
+  % Independent and identically distributed
+\end{definition}
+
+\begin{definition}{Correlation Coefficient}
+  % Independent and identically distributed
+\end{definition}
+
+\subsection{Moments}
+
+\begin{definition}{Moments}
+
+\end{definition}
+
+\begin{definition}{Moment Generating Function}
+  % Uniqueness
+\end{definition}
+
+\begin{definition}{Joint Moment Generating Function}
+  % dependent v Independent variables
+\end{definition}
+
+\begin{remark}{Moment Generating Function of Sum of Independent Variables}
+
+\end{remark}
+
+\subsection{Intervals}
+% Which is wald v wilks approach
+
+\begin{definition}{Coverage of an Interval}
+
+\end{definition}
+
+\begin{definition}{Confidence Intervals}
+
+\end{definition}
+
+\begin{remark}{Transformed Confidence Intervals}
+  % confidence interval for reparameterisation
+\end{remark}
+
+\begin{definition}{Confidence Set}
+
+\end{definition}
+
+\begin{definition}{Credible Intervals}
+
+\end{definition}
+
+\begin{theorem}{Convergence of Confidence Intervals}
+
+\end{theorem}
+
+\subsection{Convergence}
+
+\begin{definition}{Convergence in Probability}
+
+\end{definition}
+
+\begin{definition}{Convergence in Distribution}
+
+\end{definition}
+
+\begin{definition}{Convergence in Quadratic Mean}
+
+\end{definition}
+
+\begin{theorem}{Continuous Mapping Theorem}
+
+\end{theorem}
+
+\begin{theorem}{Slutsky's Theorem}
+
+\end{theorem}
+
+\section{Theorems}
+
+\begin{theorem}{Bayes Theorem}
+
+\end{theorem}
+
+\begin{theorem}{Binomial Theorem}
+
+\end{theorem}
+
+\begin{theorem}{Boole's Inequality}
+
+\end{theorem}
+
+\begin{theorem}{Chain Rule}
+
+\end{theorem}
+
+\begin{theorem}{Chebyshev's Inequality}
+
+\end{theorem}
+
+\begin{theorem}{de Moivre-Laplace Theorem}
+
+\end{theorem}
+
+\begin{theorem}{de Morgan's Law}
+
+\end{theorem}
+
+\begin{theorem}{Inclusion Exclusion Principle}
+
+\end{theorem}
+
+\begin{theorem}{Lack of Memory Property}
+
+\end{theorem}
+
+
+\begin{theorem}{Law of Total Expectation}
+
+\end{theorem}
+
+\begin{theorem}{Partition Theorem}
+
+\end{theorem}
+
+\begin{theorem}{Probability Mass Function}
+
+\end{theorem}
+
+\begin{theorem}{Weak Law of Large Numbers}
+
+\end{theorem}
+
+\section{Identities}
+
+\[
+\begin{array}{rclcl}
+  (A\cup B)^c&=&A^c\cap B^c&\quad\\
+  (A\cap B)^c&=&A^c\cup B^c\\
+  1-\prob(A\cup B)&=&\prob(A^c\cap B^c)&&[\text{de Morgan's Law}]\\
+  1-\prob(A\cap B)&=&\prob(A^c\cup B^c)&&[\text{de Morgan's Law}]\\
+  {n \choose k}&=&{n \choose n-k}\\
+  {n \choose k}&=&{n-1 \choose k-1}+{n-1 \choose k}&&[\text{Pascal's Identity}]\\
+  \prob(A^c|B)&=&1-\prob(A|B)\\
+  \prob(\emptyset|B)&=&0\\
+  \prob(A\cup C|B)&=&\prob(A|B)+\prob(C|B)-\prob(A\cap C|B)\\
+  \expect(aX+b)&=&a\expect(X)+b\\
+  \expect(X+Y)&=&\expect(X)+\expect(Y)\\
+  \prob(X=x)&=&\sum_{y\in Y}\prob(X=x|Y=y)\\
+  \var(X)&=&\expect(X^2)-[\expect(X)]^2\\
+  \var(aX+b)&=&a^2\var(X)\\
+  \var(X+Y)&=&\var(X)+\var(Y)+2\cov(X,Y)\\
+  \cov(X,Y)&=&\expect(XY)-\expect(X)\cdot\expect(Y)\\
+  \cov(aX,bY)&=&ab\cov(X,Y)\\
+  \cov(X,Y+Z)&=&\cov(X,Y)+\cov(X,Z)\\
+  \M_{aX+b}(t)&=&e^{tb}\M_X(ta)
+\end{array}
+\]
+
+\end{document}
