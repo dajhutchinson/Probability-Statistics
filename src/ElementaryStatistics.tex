@@ -3,79 +3,108 @@
 \usepackage[margin=1in, paperwidth=8.3in, paperheight=11.7in]{geometry}
 \usepackage{amsmath,amsfonts,fancyhdr}
 \usepackage[section]{DomH}
-\headertitle{Elementary Probability}
+\headertitle{Elementary Statistics}
 
 \begin{document}
 
-\title{Elementary Probability}
+\title{Elementary Statistics}
 \author{Dom Hutchinson}
 \date{\today}
 \maketitle
 
-\textit{Statistics} is the analysis of data from \underline{past} events. While \textit{Probability} is the study of predicting the likelihood of \underline{future} events.
+\textit{Statistics} is the analysis of data from \textit{past} events. While \textit{Probability} is the study of predicting the likelihood of \textit{future} events.\\
 
-\begin{remark}{Frequentist V Bayesian Approach}
-  
+\begin{remark}{Frequentist \& Bayesian Approach to Statistics}
+  There are two main approachs to probability: \textit{Frequentist}; and, \textit{Bayesian}.
+  \begin{itemize}
+      \item[-] The \textit{Frequentist} approach defines the probability of an event to be limit of the \textit{relative frequency} of that event, over many trials.
+      \item[-] The \textit{Bayesian} approach is based on \textit{Bayes Theorem} and treats probability as a \textit{degree of belief} in an event. This belief is made up of prior beliefs and from oberserved data.
+  \end{itemize}
 \end{remark}
 
 \section{Definitions}
 
-\begin{definition}{Order Statistics}
-
+\begin{definition}{Statistic}
+  A \textit{Statistic} is a quanity computed from a dataset (or sample). Typically \textit{Statistics} are used to quantify features of the sample.
 \end{definition}
 
-\begin{definition}{Mean}
-
+\begin{definition}{Order Statistic}
+An \textit{Order Statistic} is a dataset which is ordered in order of increasing value.\\
+$x_{(i)}$ denotes the value with the $i^\text{th}$ smallest value (the datapoint with \textit{rank} $i$).
 \end{definition}
 
-\begin{definition}{Median}
-
-\end{definition}
-
-\begin{definition}{Mode}
-
+\begin{definition}{Sample Mean, $\bar{x}$}
+The \textit{Sample Mean} of a dataset is the arithmetic average of the dataset and represents the mid point of a dataset, weighted by the value of datapoints. The \textit{Mean} is considered the \textit{Expected Value} when sampling from a dataset.
+\[
+  \bar{x}=\frac1n\sum_{i=1}^nx_i
+\]
 \end{definition}
 
 \begin{definition}{Trimmed Sample Mean}
-
+The \textit{Trimmed Sample Mean} is the mean from a dataset, with a defined proportion of the most extreme data ignored. $\Delta\%$ denotes the \textit{Trimmed Sample Mean} with $n\Delta$ smallest and largest values removed.
+\[\begin{array}{rcl}
+  \text{TSM}(\{x_1,\dots,x_n\},\Delta)&=&\text{Mean}(\{x_{(k+1)},\dots,x_{(n-k-1)}\}) \text{ where } k=\left\lfloor\frac{n\Delta}{100}\right\rfloor\\
+  &=&\frac1{n-2k}\sum\limits_{i=k+1}^{n-k-1}x_{(i)}
+\end{array}\]
 \end{definition}
 
-\begin{definition}{Sample Variance}
-
+\begin{definition}{Median, $H_2$}
+The \textit{Median} is the true midpoint of a dataset.
+\[
+\text{median}(\{x_1,\dots,x_n\})=\begin{cases}
+  x_{\left(\frac{n+1}2\right)}&\text{if }n\text{ is odd}\\
+  \frac12\left(x_{\left(\frac{n}2\right)}+x_{\left(\frac{n}2+1\right)}\right)&\text{if }n\text{ is even}
+\end{cases}
+\]
 \end{definition}
 
-\begin{definition}{Hinges}
-
+\begin{definition}{Mode}
+The \textit{Mode} of a dataset is the most common value.
 \end{definition}
 
-\begin{definition}{Quartiles/Quantiles}
-
+\begin{definition}{Sample Variance, $s$}
+The \textit{Sample Variance} of a dataset is a measure of spread of data around the mean. A lower \textit{Sample Variance} indicates data is more concentrated around the mean.
+\[
+s^2:=\frac1{n-1}\sum_{i=1}^n(x_i-\bar{x})^2
+\]
+\textit{Standard Deviation} is the square root of \textit{Sample Variance}.
 \end{definition}
 
-\begin{definition}{Inter Quartile Range}
-
+\begin{definition}{Hinges, $H_k$}
+\textit{Hinges} describe the spread of data, while trying to ignore extreme values.
+\begin{itemize}
+  \item[-] \textit{Lower Hinge}, $H_1$ is the \textit{median} of the set of values with rank \underline{less than}, or equal to, the rank of the \textit{sample median}.
+  \item[-] \textit{Upper Hinge}, $H_3$, is the \textit{median} of the set of values with rank \underline{greater than}, or equal to, the rank of the \textit{sample median}.
+\end{itemize}
+\textit{N.B.} - $H_2$ is the median.
 \end{definition}
 
-\begin{definition}{Skew}
-
+\begin{definition}{Quartiles, $Q_k$ \& Percentiles, $P_k$}
+  \textit{Quartiles} \& \textit{Percentiles} describe the distribution of values in a data set.
+  \begin{itemize}
+    \item[-] \textit{Quartiles} partition the dataset into four equally sized groups \begin{center}$\frac{nk}4$ values are less than $Q_k$ for $k\in[1,3]$.\end{center}
+    \item[-] \textit{Percentiles} partition the dataset into one-hundred equally sized groups
+    \begin{center} $\frac{nk}{100}$ values are less than $P_k$ for $k\in[1,99]$. \end{center}
+  \end{itemize}
+  The \textit{Inter-Quartile Range} of a data set is the difference between $Q_1$ and $Q_3$.
+  \[ \text{IQR}:=Q_3-Q_1\]
 \end{definition}
 
 \begin{definition}{Outliers}
-
+A data point $x$ is considered an \textit{Outlier} if it is more than $\frac32\text{IQR}$ from its nearest hinge.
+\[\text{max}\left(|x-H_3|,|x-H_1|\right)>\frac32\text{IQR}\]
 \end{definition}
 
-\begin{definition}{Quantity of Interest, $\tau$}
-
+\begin{definition}{Skew}
+  \textit{Skew} is a measure of the \textit{asymetry} of a dataset. A dataset is:
+  \begin{itemize}
+    \item \textit{Left Skewed} if $|H_3-H_2|>|H_2-H_1|$.
+    \item \textit{Right Skewed} if $|H_2-H_1|>|H_3-H_2|$.
+  \end{itemize}
 \end{definition}
 
-\begin{definition}{Random Sample}
-
-\end{definition}
-
-\section{Theorems}
-
-\begin{theorem}{Central Limit Theorem}
-  % continuity correction
-\end{theorem}
+% \begin{definition}{Quantity of Interest, $\tau(\cdot)$}
+%
+% \end{definition}
 
 \end{document}
