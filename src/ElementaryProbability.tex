@@ -17,140 +17,189 @@
 \section{Definition}
 
 \begin{definition}{Axioms of Probability}
-
+Let $\Omega$ be a sample space and $\prob:\F\to[0,1]$ be a probability measure. The \textit{Axioms of Probability} state
+\begin{itemize}
+  \item[-] $\prob(A)\in[0,1]\ \forall\ A\subset\Omega$.
+  \item[-] $\prob(\emptyset)=0$.
+  \item[-] $\prob(\Omega)=1$.
+  \item[-] $\prob\left(\bigcup\limits_{i=1}^nA_i\right)=\sum\limits_{i=1}^n\prob(A_i)$ when $A_1,\dots,A_n$ are all pairwise disjoint.
+\end{itemize}
 \end{definition}
 
 \begin{definition}{Permutation}
+A \textit{Permutation} is when selecting $r$ objects from a set of $n$ and the order of selection \underline{does} matter.\\
+There are ${^n}P_r:=\frac{n!}{(n-r)!}$ possible ways to do this.
   % And complimentary event
 \end{definition}
 
 \begin{definition}{Combination}
+  A \textit{Permutation} is when selecting $r$ objects from a set of $n$ and the order of selection \underline{does not} matter.\\
+  There are ${^n}C_r:={n\choose r}=\frac{n!}{(n-r)!r!}$ possible ways to do this.
   % And complimentary event
 \end{definition}
 
-\subsection{Randomness}
+\subsection{Probability Space}
 
-\begin{definition}{Sample Space}
-
+\begin{definition}{Sample Space, $Omega$}
+A \textit{Sample Space} $\Omega$ is the set of all possible events
 \end{definition}
 
-\begin{definition}{Sigmafield}
-
+\begin{definition}{Sigmafield, $\F$}
+A \textit{Sigmafield}, $\F$, is a set of subsets of a \textit{Sample Space} which fulfil the \textit{Axioms of Probability}.
+\begin{itemize}
+  \item $\emptyset\in\F$
+  \item $\forall \{A_1,\dots,A_n\}\subset\F,\quad \left(\bigcup\limits_{i=1}^nA_i\right)\in\F$.
+  \item $\forall A\in\F,\quad A^c\in\F$
+\end{itemize}
+The events in $\F$ are said to be \textit{$\F$-Measurable}. If $\F_1,\F_2$ are \textit{Sigmafields} then $\F_1\subset\F_2$ is a \textit{Sigmafield}.
 \end{definition}
 
-\begin{definition}{Probability Space}
-
+\begin{definition}{Probability Measure, $\prob$}
+A \textit{Probability Measure} is a function $\prob:\F\to[0,1]$ which satisfies
+\begin{itemize}
+  \item[-] $\prob(\emptyset)=0$.
+  \item[-] $\prob(\Omega)=1$.
+  \item[-] $\prob\left(\bigcup\limits_{i=1}^nA_i\right)=\sum\limits_{i=1}^n\prob(A_i)$ when $A_1,\dots,A_n$ are all pairwise disjoint.
+\end{itemize}
 \end{definition}
 
-\begin{definition}{Random Event}
-  % And complimentary event
+\begin{definition}{Probability Space, $(\Omega,\F,\prob)$}
+A \textit{Probability Space} is a triple of: a sample space $\Omega$; a sigmafield $\F$; and, a probability measure $\prob$.
 \end{definition}
 
-\begin{definition}{Random Variable}
-
+\begin{definition}{Random Variable, $X$}
+A \textit{Random Variable} $X:\Omega\to\reals$ is a function which maps events to real-values. \textit{Random Variables} represent the possible outcomes of random phenomenon. \textit{Random Variables} have a \textit{Probability Distribution} which specifies the likelihood of events occuring (the distribution is often unknown). \textit{Random Variables} can take either discrete or continuous values.
 \end{definition}
 
-\begin{definition}{Random Sum}
-
+\begin{definition}{Random Vector, $\X$}
+A \textit{Random Vector} is a vector whose values depend on random events. Each element can be assigned a different distribution (dependent or independet). Often IID variables are considered as a \textit{Random Vector} to compress notation.
 \end{definition}
 
 \subsection{Probability Mass Functions}
 
-\begin{definition}{Probability Measure, $\prob$}
-
+\begin{definition}{Probability Distribution}
+\textit{Probability Distributions} are functions which return the probability of a specific outcome of a \textit{Random Variable} occuring. See \texttt{ProbabilityDistributions.pdf} for some common \& well defined distributions.
 \end{definition}
 
-\begin{definition}{Discrete Distribution}
-
+\begin{definition}{Probability Function, $f_X(\cdot)$}
+A \textit{Probability Mass Function} is the probability distribution for a \underline{discrete} random variable.\\
+A \textit{Probability Density Function} is the probability distribution for a \underline{continuous} random variable.\\
+\[\begin{array}{rrl}
+f_X(x)&:=&\prob(X=x)\\
+&=&\displaystyle\int f_{X,Y}(x,y)dy
+\end{array}\]
 \end{definition}
 
-\begin{definition}{Continuous Distribution}
-  % Conditional Expectation
+\begin{definition}{Cummulative Probability Function, $F_X(\cdot)$}
+A \textit{Cummulative Probability Function} gives the probability of observing a value less than, or equal to, the value specified.
+\[\begin{array}{rrl}
+F_X(x)&:=&\prob(X\leq x)\\
+&=&\displaystyle\int_{-\infty}^xf_X(y)dy\\
+&=&\displaystyle\sum_{i=-\infty}^xf_X(i)
+\end{array}\]
 \end{definition}
 
-\begin{definition}{Joint Probability Mass Function}
-
+\begin{definition}{Joint Probability Function, $f_{X,Y}(\cdot,\cdot)$}
+A \textit{Joint Probability Function} is the probability distribution for multiple random variables and returns the probability of the random variables having specifed values \underline{at the same time}.
+\[ f_{X,Y}(x,y)=\prob(X=x,Y=y) \]
 \end{definition}
 
-\begin{definition}{Marginal Probability Mass Function}
-
+\begin{definition}{Conditional Probability Function, $f_{X|Y}(\cdot|\cdot)$}
+A \textit{Conditional Probability Function} is defined for multiple random variables (say $X$ \& $Y$) and defines the probability of $X$ having a specific value \underline{given that} $Y$ has a specific value.
+\[ f_{X|Y}(x|y)=\frac{f_{X,Y}(x,y)}{f_X(x)} \]
 \end{definition}
 
-\begin{definition}{Conditional Probability Mass Function}
+\subsection{Describing Random Variables}
 
+\begin{definition}{Expected Value, $\expect(\cdot)$}
+The \textit{Expected Value} of a random variable is the weighted average value and equivalent to the arithmetic mean. Let $X\sim f_X(\cdot)$
+\[
+\begin{array}{rclcl}
+\expect(X)&:=&\displaystyle\int xf_X(x)dx&\quad&\text{[Continuous RV]}\\
+&:=&\displaystyle\sum_x xf_X(x)&\quad&\text{[Continuous RV]}
+\end{array}
+\]
+The \textit{Conditional Expected Value} of a random variable is its expected value, given another random variable has a specified value.
+\[\begin{array}{rcl}
+\expect(X|Y=y)&=&\displaystyle\int xf_{X|Y}(x|y)dx\\
+&=&\displaystyle\sum_x xf_{X|Y}(x|y)
+\end{array}\]
 \end{definition}
 
-\subsection{Describing Mass Functions}
-
-\begin{definition}{Expectation}
-
+\begin{definition}{Variance, $\var(\cdot)$}
+The \textit{Variance} of a random variable measures the expected spread of values around the expected value.
+\[\begin{array}{rrl}
+\var(X)&:=&\expect[(X-\expect(X))^2]\\
+&=&\expect(X^2)-\expect(X)^2
+\end{array}\]
+The \textit{Conditional Variance} of a random variable is the variance of the random variable given the value of another random variable(s).
+\[ \var(X|Y)=\expect\left([X-\expect(X|Y)]^2|Y\right) \]
 \end{definition}
 
-\begin{definition}{Variance}
-
-\end{definition}
-
-\begin{definition}{Conditional Variance}
-
-\end{definition}
-
-\begin{definition}{Covariance}
-
-\end{definition}
-
-\begin{definition}{Percentage Points}
-
+\begin{definition}{Percentage Points, $x_\alpha$}
+  A \textit{Percentage Point} $x_\alpha\in\reals$ of a random variable $X$ is the value such that $\alpha\in[0,1]$ of the distributions mass is less than $x_\alpha$.
+  \[ \prob(X<x_\alpha)=\alpha\quad\int_{-\infty}^{x_\alpha}xf_X(x)dx=\alpha\quad\sum_{x=-\infty}^{x_\alpha}xf_X(x)=\alpha \]
 \end{definition}
 
 \subsection{Dependence \& Correlation}
 
-\begin{definition}{Independent Random Variables}
-  % Independent and identically distributed
+\begin{definition}{Covariance, $\cov(\cdot)$}
+\textit{Covariance} is a measure of the relationship between two random variables. A value close to zero indicates no relationship; a negative value indicates a negative correlation; and, a positive value indicates a positive correlation.
+\[\begin{array}{rrl}
+\cov(X,Y)&:=&\expect[(X-\expect(X))(Y-\expect(Y))]\\
+&=&\expect(XY)-\expect(X)\expect(Y)
+\end{array}\]
 \end{definition}
 
-\begin{definition}{Correlation Coefficient}
+\begin{definition}{Pearson's Correlation Coefficient, $\corr(\cdot,\cdot)$}
+  \textit{Pearson's Correlation Coefficient} is a measure of the relationship between two random variables. Similar to \textit{Covariance} except it is valued in $[-1,1]$.
+  \[ \corr(X,Y)=\frac{\cov(X,Y)}{\var(X)\var(Y)} \]
+\end{definition}
+
+\begin{definition}{Independent Random Variables}
+  A set of random variables $X_1,\dots,X_n$ are \textit{Mututally Independent} iff
+  \[ \forall\{x_1,\dots,x_n\}\quad f_{X_1,\dots,X_n}(x_1,\dots,x_n)=\prod_{i=1}^nf_{X_i}(x_i) \]
+  If $X_1,\dots,X_n$ are mutually independent and have the same distribution then they are said to be \textit{Independent Indetically Distributed} (IID) random variables.\\
+  If $X_1,\dots,X_n$ are mutually independent then $\expect(X_1)\dots\expect(X_n)$ and $\cov(X_i,X_j)=0\ \forall\ i\neq j$.
   % Independent and identically distributed
 \end{definition}
 
 \subsection{Moments}
 
 \begin{definition}{Moments}
-
+  The $n^{th}$ \textit{Moment} of a random variable $X$ is $\expect(X^n)$.
 \end{definition}
 
 \begin{definition}{Moment Generating Function}
-  % Uniqueness
+  A \textit{Moment Generating Function} is an alternative specification of a \textit{Probability Distribution}. \textit{MGF}s are unique for each distribution and thus is two distributions have the same \textit{MGF} then they are the same distribution.
+  \[\begin{array}{rrlcl}
+  \mathcal{M}_X(t)&:=&\expect(e^{tX})&\quad&\text{for }t\in\reals\\
+  &=&\displaystyle\int e^{tx}f_X(x)dx\\
+  &=&\displaystyle\sum_xe^{tx}f_X(x)
+  \end{array}\]
 \end{definition}
-
-\begin{definition}{Joint Moment Generating Function}
-  % dependent v Independent variables
-\end{definition}
-
-\begin{remark}{Moment Generating Function of Sum of Independent Variables}
-
-\end{remark}
 
 \subsection{Intervals}
 % Which is wald v wilks approach
 
-\begin{definition}{Coverage of an Interval}
-
+\begin{definition}{Random Interval, $\mathcal{I}(\cdot)$}
+  A \textit{Random Interval} is an interval whose bounds depend on random variable(s).\\
 \end{definition}
 
-\begin{definition}{Confidence Intervals}
-
+\begin{definition}{Wald's Confidence Interval}
+  A \textit{Wald Confidence Interval} is a \textit{Random Interval} $\I(\X):=[L(\X),U(\X)]$ used to give a continuous range of possible values for an unknown parameter, dependent on observed data.\\
+  The \textit{Coverage} of a \textit{Confidence Interval} is the probability of the true parameter value being in the interval.\\
+  A $1-\alpha$ \textit{Confidence Interval} is a \textit{Confidence Interval} with coverage of at least $1-\alpha$.
+  \[ \prob(\theta^*\in\I(\X))\geq1-\alpha \]
+  Consider a bijective, continuously differentiable transformation of a parameter $\tau:=g(\theta)$. A \textit{Confidence Interval} for $\tau(\theta^*)$ can be derived as
+  \begin{itemize}
+    \item $[g(L(\X)),g(U(\X))]$ if $\tau$ is \textit{increasing}.
+    \item $[g(U(\X)),g(L(\X))]$ if $\tau$ is \textit{decreasing}.
+  \end{itemize}
 \end{definition}
 
-\begin{remark}{Transformed Confidence Intervals}
-  % confidence interval for reparameterisation
-\end{remark}
-
-\begin{definition}{Confidence Set}
-
-\end{definition}
-
-\begin{definition}{Credible Intervals}
-
+\begin{definition}{Wilks' Confidence Set}
+  A \textit{Wilks Confidence Set} is the set of estimators which are sufficient close in likelihood to the \textit{Maximum Likelihood Estimate}. See \texttt{StatisticalModels.tex} for more.
 \end{definition}
 
 \begin{theorem}{Convergence of Confidence Intervals}
@@ -159,79 +208,108 @@
 
 \subsection{Convergence}
 
-\begin{definition}{Convergence in Probability}
-
+\begin{definition}{Convergence in Probability, $Z_n\to_\prob Z$}
+A sequence of random variables $\{Z_n\}_{n\in\nats}$ \textit{Converges in Probability} to random variable $Z$ if
+\[ \forall\varepsilon>0\quad\lim_{n\to\infty}\prob(|Z_n-Z|>\varepsilon)=0 \]
 \end{definition}
 
-\begin{definition}{Convergence in Distribution}
-
+\begin{definition}{Convergence in Distribution, $Z_n\to_D Z$}
+A sequence of random variables $\{Z_n\}_{n\in\nats}$ \textit{Converges in Distribution} to random variable $Z$ if
+\[ \forall z\in Z\text{ where }F_Z(z)\text{ is continuous} \lim_{n\to\infty}F_{Z_n}(z)=F_Z(z)\]
 \end{definition}
 
-\begin{definition}{Convergence in Quadratic Mean}
-
+\begin{definition}{Convergence in Quadratic Mean, $Z_n\to_{qm}Z$}
+A sequence of random variables $\{Z_n\}_{n\in\nats}$ \textit{Converges in Quadratic Mean} to random variable $Z$ if
+\[ \lim_{n\to\infty}\expect\left[(Z_n-Z)^2\right]=0 \]
 \end{definition}
+
+\begin{remark}{Hierarchy of Convergences}
+  \begin{itemize}
+    \item $Z_n\to_{qm}Z\implies Z_n\to_\prob Z$
+    \item $Z_n\to_\prob Z\implies Z_n\to_D Z$
+    \item $\forall\ a\in\reals\quad Z_n\to_\prob a\Longleftrightarrow Z_n\to_Da$
+  \end{enumerate}
+\end{remark}
 
 \begin{theorem}{Continuous Mapping Theorem}
-
+  \begin{enumerate}
+    \item $Z_n\to_\prob Z\implies g(Z_n)\to_\prob g(Z)$
+    \item $Z_n\to_D Z\implies g(Z_n)\to_D g(Z)$
+  \end{enumerate}
 \end{theorem}
 
 \begin{theorem}{Slutsky's Theorem}
-
+If $Y_n\to_DY$ and $Z_n\to_Dc$ for $c\in\reals$. Then
+  \begin{enumerate}
+    \item $Y_n+Z_n\to_DY+c$
+    \item $Y_nZ_n\to Yc$
+    \item $\dfrac{Y_n}{Z_n}\to_D\dfrac{Y}c$
+  \end{enumerate}
 \end{theorem}
 
 \section{Theorems}
 
 \begin{theorem}{Bayes Theorem}
-
+  Consider $X\sim f_X(\cdot,\theta)$
+\[ \underbrace{\prob(\theta|X)}_\text{Posterior}=\dfrac{\overbrace{\prob(X|\theta)}^\text{Likelihood}\overbrace{\prob(\theta)}^\text{Prior}}{\underbrace{\prob(X)}_\text{Evidence}} \]
 \end{theorem}
 
 \begin{theorem}{Binomial Theorem}
-
+Let $a,b\in\reals$ then $(a+b)^n=\displaystyle\sum_{i=0}^n{n\choose i}a^ib^{n-i}$.
 \end{theorem}
 
 \begin{theorem}{Boole's Inequality}
+Let $A_1,\dots,A_n$ be a set of events.
+\[ \prob\left(\bigcup\limits_{i=1}^nA_i\right)\leq\sum_{i=1}^n\prob(A_i) \]
+The probability of all events occuring is never greater than the sum of the probability of the events occuring independently.
+\end{theorem}
 
+\begin{theorem}{Central Limit Theorem}
+  Let $X_1,\dots,X_m$ be iid random variables with $\expect(X)=\mu$, $\var(X)=\sigma^2$ and $\bar{X}_n$ be the sample mean of the first $n$. Then for large $n$
+  \[\frac{\bar{X}_n-\mu}{\sigma/\sqrt{n}}\sim\text{Normal}(0,1)\]
+  % Continuity correction
 \end{theorem}
 
 \begin{theorem}{Chain Rule}
-
+  Let $A_1,\dots,A_n$ be a set of events.
+  \[ \prob(A_1\cap\dots\cap A_n)=\prod_{i=1}^n\prob\left(A_i\bigg|\bigcap_{j=1}^{i-1}A_j\right) \]
 \end{theorem}
 
 \begin{theorem}{Chebyshev's Inequality}
-
+Let $X$ be a random variable, define $\mu:=\expect(X),\ \sigma^2:=\var(X)$ and let $c\in\reals$.
+\[ \prob(|X-\mu|>c)\leq\frac{\sigma^2}{c^2} \]
 \end{theorem}
 
 \begin{theorem}{de Moivre-Laplace Theorem}
-
+Let $X_n\sim\text{Binomial}(n,p)$ be a sequence of binomial random variables with fixed probability $p$ and $a<b$.
+\[ \lim_{n\to\infty}\prob\left(a<\dfrac{X_n-np}{\sqrt{np(1-p)}}\leq b\right)=\Phi(b)-\Phi(a) \]
 \end{theorem}
 
-\begin{theorem}{de Morgan's Law}
-
-\end{theorem}
-
-\begin{theorem}{Inclusion Exclusion Principle}
-
+\begin{theorem}{Inclusion-Exclusion Principle}
+Let $A_1,\dots,A_n$ be a set of events.
+\[ \prob\left(\bigcup\limts_{i=1}^nA_i\right)=\sum_{i=1}^n(-1)^{i+1}\left(\sum_{1\leq j_1<\dots<j_i\leq n}|A_{j_1}\cap\dots\cap A_{j_i}\right) \]
 \end{theorem}
 
 \begin{theorem}{Lack of Memory Property}
-
+\[ \prob(X=x+n|X>n)=\prob(X=x) \]
 \end{theorem}
 
-
 \begin{theorem}{Law of Total Expectation}
+\[ \expect(\expect(X|Y))=\expect(X) \]
+\end{theorem}
 
+\begin{theorem}{Markov's Inequality}
+  Let $X$ be a non-negative random variable and $a>0$ then $\prob(X\geq a)\leq\frac1a\expect(X)$.
 \end{theorem}
 
 \begin{theorem}{Partition Theorem}
-
-\end{theorem}
-
-\begin{theorem}{Probability Mass Function}
-
+Let $B_1,\dots,B_n$ be a disjoint partition of the sample space with $\prob(B_i)>0\ \forall\ i$.
+\[ \prob(A)=\sum_{i=1}^n\prob(A|B_i)\prob(B_i) \]
 \end{theorem}
 
 \begin{theorem}{Weak Law of Large Numbers}
-
+Let $X_1,\dots,X_n$ be a set of IID RVs each with mean $\mu$.
+\[ \forall\ \epsilon>0\quad \prob\left(|\bar{X}-\mu|>c\right)\underset{n\to\infty}\longrightarrow0 \]
 \end{theorem}
 
 \section{Identities}
@@ -244,6 +322,7 @@
   1-\prob(A\cap B)&=&\prob(A^c\cup B^c)&&[\text{de Morgan's Law}]\\
   {n \choose k}&=&{n \choose n-k}\\
   {n \choose k}&=&{n-1 \choose k-1}+{n-1 \choose k}&&[\text{Pascal's Identity}]\\
+  p_X(x)&=&\int p_{X,Y}(x,y)dy\\
   \prob(A^c|B)&=&1-\prob(A|B)\\
   \prob(\emptyset|B)&=&0\\
   \prob(A\cup C|B)&=&\prob(A|B)+\prob(C|B)-\prob(A\cap C|B)\\
@@ -256,7 +335,8 @@
   \cov(X,Y)&=&\expect(XY)-\expect(X)\cdot\expect(Y)\\
   \cov(aX,bY)&=&ab\cov(X,Y)\\
   \cov(X,Y+Z)&=&\cov(X,Y)+\cov(X,Z)\\
-  \M_{aX+b}(t)&=&e^{tb}\M_X(ta)
+  \M_{aX+b}(t)&=&e^{tb}\M_X(ta)\\
+  \M_{aX+bY}(t)&=&\M_X(at)\cdot\M_Y(bt)
 \end{array}
 \]
 
